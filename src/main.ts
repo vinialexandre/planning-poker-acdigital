@@ -9,11 +9,10 @@ async function bootstrap() {
     .setTitle('Planning Poker')
     .setDescription('The Planning Poker API description')
     .setVersion('1.0')
-    .addTag('poker')
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
 
-  await app.listen(process.env.PORT || 3000);
+  await app.listen(process.env.PORT || 5000);
 }
 bootstrap();
