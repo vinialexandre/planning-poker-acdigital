@@ -12,9 +12,9 @@ export class SalaController {
 
   @ApiOkResponse({type: SalaModel})
   @Get(':administrador')
-  async administrador(@Param('administrador') email: string): Promise<SalaModel> {
+  async administrador(@Param('administrador') email: string): Promise<SalaModel[]> {
     try{
-      return this.salaService.buscarUmaSala(email);
+      return this.salaService.buscarSalas(email);
     }catch(error){
       throw new HttpException(new Result('Não foi possivel realizar a chamada', false, null, error), 
                               HttpStatus.BAD_REQUEST);

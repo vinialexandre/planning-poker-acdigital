@@ -18,8 +18,8 @@ export class SalaService {
     return this.salaModel.find();
   }
 
-  buscarUmaSala(email: string) {
-    return this.salaModel.findOne({ email: email });
+  buscarSalas(email: string) {
+    return this.salaModel.find({ email: email });
   }
 
   buscarPorId(id: string) {
