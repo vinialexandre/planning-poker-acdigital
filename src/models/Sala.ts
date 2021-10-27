@@ -1,14 +1,23 @@
-import { Historia } from './Historia';
-import { Administrador } from './Administrador';
-import { Jogador } from './Jogador';
-import { Metodologia } from './Metodologia';
+import { Historia } from './historia';
+import { Administrador } from './administrador';
+import { Jogador } from './jogador';
+import { Metodologia } from './metodologia';
+import { ApiProperty } from '@nestjs/swagger';
+import { IsNotEmpty } from 'class-validator';
 export class Sala {
-    constructor(
-        public nome: string,
-        public metodologia?: Metodologia,
-        public jogadores?: Jogador[],
-        public administrador?: Administrador,
-        public historias?: Historia[]
-    ){
-    }
+    @IsNotEmpty()
+    @ApiProperty()
+    nome: string
+
+    @ApiProperty()
+    metodologia?: Metodologia
+
+    @ApiProperty()
+    jogadores?: Jogador[]
+
+    @ApiProperty()
+    administrador?: Administrador
+
+    @ApiProperty()
+    historias?: Historia[]
 }

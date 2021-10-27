@@ -1,11 +1,8 @@
-import { Voto } from "./Voto"
+import { Voto } from "./voto"
 
 export class Historia {
-    constructor(
-        public nome: string,
-        public votos: Voto[],
-        public emAberto: boolean,
-        public dataHora: string
-    ){
-    }
+    nome: string
+    votos: Voto[]
+    emAberto: boolean
+    dataHora: string
 }

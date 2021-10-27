@@ -1,9 +1,6 @@
-import { Carta } from "./Carta"
+import { Carta } from "./carta"
 
 export class Metodologia {
-    constructor(
-        public nome: string,
-        public cartas: Carta[]
-    ){
-    }
+    nome: string
+    cartas: Carta[]
 }

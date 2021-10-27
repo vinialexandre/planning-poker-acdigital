@@ -1,8 +1,5 @@
-import { TipoDeCarta } from './TipoDeCarta';
+import { TipoDeCarta } from './enum/tipo.carta.enum';
 export class Carta { 
-    constructor(
-        public tipo: TipoDeCarta,
-        public valor: string | number
-    ){
-    }
+    tipo: TipoDeCarta
+    valor: string | number
 }

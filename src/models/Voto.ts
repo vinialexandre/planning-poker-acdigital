@@ -1,11 +1,9 @@
-import { Historia } from './Historia';
-import { Jogador } from './Jogador';
-import { Carta } from "./Carta";
+import { Historia } from './historia';
+import { Jogador } from './jogador';
+import { Carta } from "./carta";
 
 export class Voto { 
-    constructor(
-        public carta: Carta,
-        public jogador: Jogador,
-        public historia: Historia
-    ){}
+    carta: Carta
+    jogador: Jogador
+    historia: Historia
 }

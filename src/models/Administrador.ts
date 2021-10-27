@@ -1,7 +1,12 @@
+
+import { ApiProperty } from '@nestjs/swagger';
+import { IsEmail, IsNotEmpty } from 'class-validator';
 export class Administrador {
-     constructor(
-         public nome: string,
-         public email: string
-     ){
-     }
+    @IsNotEmpty()
+    @ApiProperty()
+    nome: string
+
+    @IsEmail()
+    @ApiProperty()
+    email: string
 }
