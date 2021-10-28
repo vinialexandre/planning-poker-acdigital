@@ -3,6 +3,7 @@ import { IsNotEmpty } from "class-validator"
 import { Voto } from "./voto"
 
 export class Historia {
+
     @IsNotEmpty()
     @ApiProperty()
     nome: string

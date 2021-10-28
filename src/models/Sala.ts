@@ -5,6 +5,9 @@ import { Metodologia } from './metodologia';
 import { ApiProperty } from '@nestjs/swagger';
 import { IsNotEmpty } from 'class-validator';
 export class Sala {
+    @ApiProperty()
+    _id: string
+
     @IsNotEmpty()
     @ApiProperty()
     nome: string

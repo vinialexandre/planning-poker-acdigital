@@ -1,4 +1,4 @@
-import { Body, Controller, Get, HttpException, HttpStatus, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, HttpException, HttpStatus, Param, Post, Put } from '@nestjs/common';
 import { ApiOkResponse } from '@nestjs/swagger';
 import { SalaService } from './sala.service';
 import { Sala as SalaModel } from '../../models/sala'
@@ -31,4 +31,40 @@ export class SalaController {
                               HttpStatus.BAD_REQUEST);
     }
   }
+
+  @ApiOkResponse({type: SalaModel})
+  @Post()
+  async criarSala(@Body() sala: SalaModel): Promise<SalaModel> {
+    try{
+      return this.salaService.criar(sala);
+    }catch(error){
+      throw new HttpException(new Result('Não foi possivel realizar cadastro', false, null, error), 
+                              HttpStatus.BAD_REQUEST);
+    }
+  }
+
+  @ApiOkResponse({type: SalaModel})
+  @Put()
+  async alterarSala(@Body() sala: SalaModel): Promise<SalaModel> {
+    try{
+      return this.salaService.alterar(sala);
+    }catch(error){
+      throw new HttpException(new Result('Não foi possivel realizar a alteração', false, null, error), 
+                              HttpStatus.BAD_REQUEST);
+    }
+  }
+
+  @ApiOkResponse({type: SalaModel})
+  @Get(':id/historia/:aberta')
+  async buscarHistoriasDaSalaAberta(@Param('id') id: string, @Param('aberta') emAberto: string) {
+    try{
+      // return this.salaService.buscarHistoriasDaSala(id, emAberto);
+      return "Nao implementado por enquanto"
+    }catch(error){
+      throw new HttpException(new Result('Não foi possivel realizar a chamada', false, null, error), 
+                              HttpStatus.BAD_REQUEST);
+    }
+  }
+
+  
 }
