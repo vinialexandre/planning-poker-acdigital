@@ -4,7 +4,7 @@ import { Carta } from "./carta.entity"
 
 export type MetodologiaDocument = Metodologia & Document;
 
-@Schema()
+@Schema({collection: 'metodologia'})
 export class Metodologia {
     @Prop()
     nome: string

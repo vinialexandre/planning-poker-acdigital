@@ -54,12 +54,24 @@ export class SalaController {
     }
   }
 
+ 
+
   @ApiOkResponse({type: SalaModel})
-  @Get(':id/historia/:aberta')
-  async buscarHistoriasDaSalaAberta(@Param('id') id: string, @Param('aberta') emAberto: string) {
+  @Post()
+  async criar(@Body() sala: SalaModel) {
     try{
-      // return this.salaService.buscarHistoriasDaSala(id, emAberto);
-      return "Nao implementado por enquanto"
+      return this.salaService.criar(sala);
+    }catch(error){
+      throw new HttpException(new Result('Não foi possivel realizar a chamada', false, null, error), 
+                              HttpStatus.BAD_REQUEST);
+    }
+  }
+
+  @ApiOkResponse({type: SalaModel})
+  @Put()
+  async alterar(@Body() sala: SalaModel) {
+    try{
+      return this.salaService.alterar(sala);
     }catch(error){
       throw new HttpException(new Result('Não foi possivel realizar a chamada', false, null, error), 
                               HttpStatus.BAD_REQUEST);

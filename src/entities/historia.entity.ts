@@ -4,7 +4,7 @@ import { Document } from 'mongoose';
 
 export type HistoriaDocument = Historia & Document;
 
-@Schema()
+@Schema({collection: 'historia'})
 export class Historia {
     @Prop()
     nome: string

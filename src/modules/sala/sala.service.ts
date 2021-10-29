@@ -11,8 +11,8 @@ export class SalaService {
   constructor(@InjectModel(Sala.name) private salaModel: Model<SalaDocument>) {}
 
   criar(sala: SalaModel): Promise<SalaModel> {
-    const user = new this.salaModel(sala)
-    return user.save();
+    const salaCriada = new this.salaModel(sala)
+    return salaCriada.save();
   }
 
   buscarTodos() {

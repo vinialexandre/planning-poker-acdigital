@@ -3,7 +3,7 @@ import { Document } from 'mongoose';
 
 export type JogadorDocument = Jogador & Document;
 
-@Schema()
+@Schema({collection: 'jogador'})
 export class Jogador {
     @Prop()
     nome: string

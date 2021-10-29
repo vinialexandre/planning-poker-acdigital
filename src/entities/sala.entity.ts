@@ -7,7 +7,7 @@ import { Metodologia } from './metodologia.entity';
 
 export type SalaDocument = Sala & Document;
 
-@Schema()
+@Schema({collection: 'sala'})
 export class Sala {
     @Prop()
     nome: string
