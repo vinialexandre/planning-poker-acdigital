@@ -1,9 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
+import { Model, Types } from 'mongoose';
 import { Sala, SalaDocument } from '../../entities/sala.entity';
 import { Sala as SalaModel } from '../../models/sala'
-import { Historia as HistoriaModel} from '../../models/historia'
 
 @Injectable()
 export class SalaService {
@@ -15,12 +14,8 @@ export class SalaService {
     return salaCriada.save();
   }
 
-  buscarTodos() {
-    return this.salaModel.find();
-  }
-
   buscarSalas(email: string) {
-    return this.salaModel.find({ email: email });
+    return this.salaModel.find({ "administrador.email": email });
   }
 
   buscarPorId(id: string) {
