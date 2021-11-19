@@ -44,7 +44,7 @@ export class SalaController {
 
   @ApiOkResponse({type: SalaModel})
   @Delete(':id')
-  async remover(@Body() id: string) {
+  async remover(@Param('id') id: string) {
     try{
       return this.salaService.remover(id);
     }catch(error){
