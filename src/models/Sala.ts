@@ -1,9 +1,9 @@
-import { Administrador } from './administrador';
-import { Jogador } from './jogador';
+import { AdministradorModel } from './administrador';
+import { JogadorModel } from './jogador';
 import { ApiProperty } from '@nestjs/swagger';
 import { IsNotEmpty } from 'class-validator';
 
-export class Sala {
+export class SalaModel {
     @ApiProperty()
     _id?: string
 
@@ -12,10 +12,8 @@ export class Sala {
     nome: string
 
     @ApiProperty()
-    jogadores?: Jogador[]
+    jogadores?: JogadorModel[]
 
     @ApiProperty()
-    administrador: Administrador
-
-  
+    administrador: AdministradorModel
 }

@@ -16,9 +16,6 @@ export class Sala {
 
     @Prop()
     administrador: Administrador
-
-    @Prop()
-    historias?: Historia[]
 }
 
 export const SalaSchema = SchemaFactory.createForClass(Sala);

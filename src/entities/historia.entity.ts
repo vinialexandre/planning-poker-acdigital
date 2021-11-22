@@ -7,6 +7,9 @@ export type HistoriaDocument = Historia & Document;
 @Schema({collection: 'historia'})
 export class Historia {
     @Prop()
+    idSala?: string
+
+    @Prop()
     nome: string
 
     @Prop()
@@ -14,9 +17,6 @@ export class Historia {
 
     @Prop()
     emAberto: boolean
-
-    @Prop()
-    dataHora: string
 }
 
 export const HistoriaSchema = SchemaFactory.createForClass(Historia);
