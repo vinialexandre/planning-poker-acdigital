@@ -1,12 +1,12 @@
 import { AdministradorService } from './administrador.service';
 import { Body, Controller, Delete, Get, HttpException, HttpStatus, Param, Patch, Post } from '@nestjs/common';
-import { Administrador as AdministradorModel} from '../../models/administrador'
-import { ApiOkResponse } from '@nestjs/swagger';
+import { AdministradorModel} from '../../models/administrador'
+import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { Result } from 'src/models/result';
-import { Sala as SalaModel } from '../../models/sala'
+import { SalaModel } from '../../models/sala'
 import { SalaService } from '../sala/sala.service';
 
-
+@ApiTags('Administrador')
 @Controller('administrador')
 export class AdministradorController {
     constructor(

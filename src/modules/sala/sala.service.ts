@@ -1,33 +1,30 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model, Types } from 'mongoose';
+import { HistoriaModel } from 'src/models/historia';
+import { JogadorModel } from 'src/models/jogador';
 import { Sala, SalaDocument } from '../../entities/sala.entity';
-import { Sala as SalaModel } from '../../models/sala'
+import { SalaModel } from '../../models/sala'
 
 @Injectable()
 export class SalaService {
 
   constructor(@InjectModel(Sala.name) private salaModel: Model<SalaDocument>) {}
 
-  criar(sala: SalaModel): Promise<SalaModel> {
+  adicionarSala(sala: SalaModel): Promise<SalaModel> {
     const salaCriada = new this.salaModel(sala)
     return salaCriada.save();
   }
 
-  buscarSalas(email: string) {
-    return this.salaModel.find({ "administrador.email": email });
+  async buscarSalas(email: string): Promise<SalaModel[]> {
+    return await this.salaModel.find({ "administrador.email": email });
   }
 
   buscarPorId(id: string) {
     return this.salaModel.findById(id);
   }
 
-  buscarHistoriasDaSala(id: string, aberta: 'true' | 'false') {
-    // const emAberto = aberta.toLowerCase() == 'true'
-    // return this.salaModel.find({ _id: id, historias:{ emAberto: emAberto }});
-  }
-
-  alterar(sala: SalaModel) {
+  alterarSala(sala: SalaModel) {
     return this.salaModel.findByIdAndUpdate({
       _id: sala._id
     }, {
@@ -37,7 +34,22 @@ export class SalaService {
     })
   }
 
-  remover(id: string) {
+  removerSala(id: string) {
     return this.salaModel.deleteOne({ _id: id })
   }
+
+  async adicionarJogador(id: string, jogador: JogadorModel) {
+    let sala: SalaModel = await this.buscarPorId(id)
+    sala.jogadores = sala.jogadores.filter(jogador => jogador.email !== jogador.email)
+    sala.jogadores.push(jogador)
+
+    return this.salaModel.findByIdAndUpdate({
+      _id: sala._id
+    }, {
+      $set: sala,
+    }, {
+      new: true
+    })
+  }
+
 }

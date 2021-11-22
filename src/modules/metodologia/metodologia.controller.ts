@@ -1,9 +1,10 @@
 import { Body, Controller, Get, HttpException, HttpStatus, Param, Post, Put } from '@nestjs/common';
-import { ApiOkResponse } from '@nestjs/swagger';
+import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { MetodologiaService } from './metodologia.service';
-import { Metodologia as MetodologiaModel } from '../../models/metodologia'
+import { MetodologiaModel } from '../../models/metodologia'
 import { Result } from 'src/models/result';
 
+@ApiTags('Métologia')
 @Controller('metodologia')
 export class MetodologiaController {
   constructor(
