@@ -13,9 +13,6 @@ export class Voto {
 
     @Prop()
     jogador: Jogador
-
-    @Prop()
-    historia: Historia
 }
 
 export const VotoSchema = SchemaFactory.createForClass(Voto);

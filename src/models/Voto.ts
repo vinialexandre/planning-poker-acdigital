@@ -1,15 +1,13 @@
-import { Historia } from './historia';
-import { Jogador } from './jogador';
-import { Carta } from "./carta";
+import { HistoriaModel } from './historia';
+import { JogadorModel } from './jogador';
+import { CartaModel } from "./carta";
 import { ApiProperty } from '@nestjs/swagger';
 
-export class Voto { 
+export class VotoModel { 
     @ApiProperty()
-    carta: Carta
+    carta: CartaModel
 
     @ApiProperty()
-    jogador: Jogador
+    jogador: JogadorModel
 
-    @ApiProperty()
-    historia: Historia
 }
