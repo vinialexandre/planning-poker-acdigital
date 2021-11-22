@@ -6,6 +6,7 @@ export type MetodologiaDocument = Metodologia & Document;
 
 @Schema({collection: 'metodologia'})
 export class Metodologia {
+
     @Prop()
     nome: string
 
@@ -14,3 +15,13 @@ export class Metodologia {
 }
 
 export const MetodologiaSchema = SchemaFactory.createForClass(Metodologia);
+
+MetodologiaSchema.set('toJSON', {
+    virtuals: true,
+    versionKey:false,
+});
+
+MetodologiaSchema.virtual('id')
+    .get(function() {
+      return this._id.toHexString();
+});

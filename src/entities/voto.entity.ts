@@ -16,3 +16,13 @@ export class Voto {
 }
 
 export const VotoSchema = SchemaFactory.createForClass(Voto);
+
+VotoSchema.set('toJSON', {
+    virtuals: true,
+    versionKey:false,
+});
+
+VotoSchema.virtual('id')
+.get(function() {
+  return this._id.toHexString();
+});

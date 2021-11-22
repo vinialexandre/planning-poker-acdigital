@@ -13,3 +13,13 @@ export class Jogador {
 }
 
 export const JogadorSchema = SchemaFactory.createForClass(Jogador);
+
+JogadorSchema.set('toJSON', {
+    virtuals: true,
+    versionKey:false,
+});
+
+JogadorSchema.virtual('id')
+.get(function() {
+  return this._id.toHexString();
+});

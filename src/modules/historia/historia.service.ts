@@ -11,7 +11,7 @@ export class HistoriaService {
   constructor(@InjectModel(Historia.name) private historiaModel: Model<HistoriaDocument>) {}
 
   buscarHistoriasdaSala(idSala: string, emAberto: boolean) {
-    return this.historiaModel.find({ _id: idSala, emAberto: emAberto });
+    return this.historiaModel.find({ idSala: idSala, emAberto: emAberto  });
   }
 
   adicionarHistoria(historia: HistoriaModel): Promise<HistoriaModel> {
@@ -21,7 +21,7 @@ export class HistoriaService {
 
   alterarHistoria(historia: HistoriaModel) {
     return this.historiaModel.findByIdAndUpdate({
-      _id: historia._id
+      _id: historia.id
     }, {
       $set: historia,
     }, {
@@ -38,7 +38,7 @@ export class HistoriaService {
     historia.votos.push(voto)
 
     return this.historiaModel.findByIdAndUpdate({
-      _id: historia._id
+      _id: historia.id
     }, {
       $set: historia,
     }, {
@@ -52,7 +52,7 @@ export class HistoriaService {
     historia.emAberto = false
     
     return this.historiaModel.findByIdAndUpdate({
-      _id: historia._id
+      _id: historia.id
     }, {
       $set: historia,
     }, {

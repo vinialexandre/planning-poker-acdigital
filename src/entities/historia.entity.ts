@@ -20,3 +20,13 @@ export class Historia {
 }
 
 export const HistoriaSchema = SchemaFactory.createForClass(Historia);
+
+HistoriaSchema.set('toJSON', {
+    virtuals: true,
+    versionKey:false,
+});
+
+HistoriaSchema.virtual('id')
+.get(function() {
+  return this._id.toHexString();
+});

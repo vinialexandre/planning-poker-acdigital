@@ -1,17 +1,35 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
+import { Model, ObjectId } from 'mongoose';
+import { MetodologiaModel } from 'src/models/metodologia';
 import { Metodologia, MetodologiaDocument } from '../../entities/metodologia.entity';
-import { MetodologiaModel } from '../../models/metodologia'
 
 @Injectable()
 export class MetodologiaService {
 
   constructor(@InjectModel(Metodologia.name) private metodologiaModel: Model<MetodologiaDocument>) {}
 
-
   buscarMetodologia() {
     return this.metodologiaModel.findOne();
+  }
+
+  alterarMetodologia(metodologia: MetodologiaModel){
+    return this.metodologiaModel.findByIdAndUpdate({
+      _id: metodologia.id
+    }, {
+      $set: metodologia,
+    }, {
+      new: true
+    })
+  }
+
+  adicionarMetodologia(metodologia: MetodologiaModel): Promise<Metodologia> {
+    const medologiaCriada = new this.metodologiaModel(metodologia)
+    return medologiaCriada.save();
+  }
+
+  remover(id: string) {
+    return this.metodologiaModel.deleteOne({ _id: id })
   }
 
 }

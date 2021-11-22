@@ -5,7 +5,7 @@ import { IsNotEmpty } from 'class-validator';
 
 export class SalaModel {
     @ApiProperty()
-    _id?: string
+    id?: string
 
     @IsNotEmpty()
     @ApiProperty()

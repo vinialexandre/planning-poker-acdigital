@@ -19,3 +19,13 @@ export class Sala {
 }
 
 export const SalaSchema = SchemaFactory.createForClass(Sala);
+
+SalaSchema.set('toJSON', {
+    virtuals: true,
+    versionKey:false,
+});
+
+SalaSchema.virtual('id')
+.get(function() {
+  return this._id.toHexString();
+});

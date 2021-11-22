@@ -4,7 +4,7 @@ import { VotoModel } from "./voto"
 
 export class HistoriaModel {
     @ApiProperty()
-    _id?: string
+    id?: string
 
     @ApiProperty()
     idSala?: string

@@ -18,4 +18,15 @@ export class Administrador {
     email: string
 }
 
+
 export const AdministradorSchema = SchemaFactory.createForClass(Administrador);
+
+AdministradorSchema.set('toJSON', {
+    virtuals: true,
+    versionKey:false,
+});
+
+AdministradorSchema.virtual('id')
+.get(function() {
+  return this._id.toHexString();
+});

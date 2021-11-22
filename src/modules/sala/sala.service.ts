@@ -1,7 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model, Types } from 'mongoose';
-import { HistoriaModel } from 'src/models/historia';
 import { JogadorModel } from 'src/models/jogador';
 import { Sala, SalaDocument } from '../../entities/sala.entity';
 import { SalaModel } from '../../models/sala'
@@ -26,7 +25,7 @@ export class SalaService {
 
   alterarSala(sala: SalaModel) {
     return this.salaModel.findByIdAndUpdate({
-      _id: sala._id
+      _id: sala.id
     }, {
       $set: sala,
     }, {
@@ -44,7 +43,7 @@ export class SalaService {
     sala.jogadores.push(jogador)
 
     return this.salaModel.findByIdAndUpdate({
-      _id: sala._id
+      _id: sala.id
     }, {
       $set: sala,
     }, {
