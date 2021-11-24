@@ -12,8 +12,6 @@ export class HistoriaController {
     private readonly historiaService: HistoriaService
     ) {}
 
-  
-
   @Post()
   async adicionarHistoria(@Body() historia: HistoriaModel): Promise<HistoriaModel> {
     try{
@@ -48,9 +46,9 @@ export class HistoriaController {
 
   @ApiOkResponse({type: HistoriaModel})
   @Put(':id/votar')
-  async adicionarVotoJogador(@Param('idHistoria') idHistoria: string, @Body() voto: VotoModel): Promise<HistoriaModel> {
+  async adicionarVotoJogador(@Param('id') id: string, @Body() voto: VotoModel): Promise<HistoriaModel> {
     try{
-      return await this.historiaService.adicionarVotoJogador(idHistoria, voto);
+      return await this.historiaService.adicionarVotoJogador(id, voto);
     }catch(error){
       throw new HttpException(new Result('Não foi possivel realizar a alteração', false, null, error), 
                               HttpStatus.BAD_REQUEST);
@@ -59,11 +57,22 @@ export class HistoriaController {
 
   @ApiOkResponse({type: HistoriaModel})
   @Put(':id/finalizar')
-  async finalizarHistoria(@Param('idHistoria') idHistoria: string): Promise<HistoriaModel> {
+  async finalizarHistoria(@Param('id') id: string): Promise<HistoriaModel> {
     try{
-      return await this.historiaService.finalizarHistoria(idHistoria);
+      return await this.historiaService.finalizarHistoria(id);
     }catch(error){
       throw new HttpException(new Result('Não foi possivel realizar a alteração', false, null, error), 
+                              HttpStatus.BAD_REQUEST);
+    }
+  }
+
+  @ApiOkResponse({type: HistoriaModel})
+  @Put(':id/reiniciar')
+  async reiniciarVotacaoHistoria(@Param('id') id: string): Promise<HistoriaModel> {
+    try{
+      return await this.historiaService.reiniciarVotacaoHistoria(id);
+    }catch(error){
+      throw new HttpException(new Result('Não foi possivel reiniciar votação', false, null, error), 
                               HttpStatus.BAD_REQUEST);
     }
   }

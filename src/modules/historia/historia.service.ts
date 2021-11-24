@@ -59,4 +59,17 @@ export class HistoriaService {
       new: true
     })
   }
+
+  async reiniciarVotacaoHistoria(idHistoria: string){
+    let historia: HistoriaModel = await this.historiaModel.findById({ _id: idHistoria })
+    historia.votos = []
+    
+    return this.historiaModel.findByIdAndUpdate({
+      _id: historia.id
+    }, {
+      $set: historia,
+    }, {
+      new: true
+    })
+  }
 }
