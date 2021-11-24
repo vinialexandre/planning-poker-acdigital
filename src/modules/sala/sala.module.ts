@@ -5,6 +5,7 @@ import { Sala, SalaSchema } from 'src/entities/sala.entity';
 import { HistoriaService } from '../historia/historia.service';
 import { SalaController } from './sala.controller';
 import { SalaService } from './sala.service';
+import { SalaGateway } from './sala.gateway';
 
 @Module({
     imports: [
@@ -12,6 +13,6 @@ import { SalaService } from './sala.service';
         MongooseModule.forFeature([{ name: Historia.name, schema: HistoriaSchema }])
     ],
     controllers: [SalaController],
-    providers: [SalaService, HistoriaService],
+    providers: [SalaService, HistoriaService, SalaGateway],
 })
 export class SalaModule {}
