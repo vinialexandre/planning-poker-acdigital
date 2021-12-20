@@ -1,26 +1,26 @@
-import { MessageBody, OnGatewayConnection, OnGatewayDisconnect, SubscribeMessage, WebSocketGateway, WebSocketServer, WsResponse } from "@nestjs/websockets";
-import { from, map, Observable } from "rxjs";
+import { Logger } from "@nestjs/common";
+import { OnGatewayInit, SubscribeMessage, WebSocketGateway, WebSocketServer } from "@nestjs/websockets";
+import { Server } from "http";
+import { Socket } from "socket.io";
+@WebSocketGateway({ namespace: '/ws-sala'})
+export class SalaGateway implements OnGatewayInit{
+    @WebSocketServer() server: Server;
+    private logger: Logger = new Logger('Sala Logger')
 
-@WebSocketGateway(/**Port */)
-export class SalaGateway implements OnGatewayConnection, OnGatewayDisconnect{
-    @WebSocketServer()
+    afterInit(server: any) {
+        this.logger.log('Initialized ...')
+    }
     
-    handleDisconnect(client: any) {
-        console.log("Method not implemented.", client);
+    @SubscribeMessage('entrouNaSala')
+    entrouNaSala(client: Socket, idSala: string){
+         client.join(idSala);
+         client.emit('salaAberta', idSala)
     }
 
-    handleConnection(client: any, ...args: any[]) {
-        console.log("Method not implemented.", client);
-    }
-
-    @SubscribeMessage('events')
-    onEvent(@MessageBody() data: unknown): Observable<WsResponse<number>> {
-        const event = 'events';
-        const response = [1, 2, 3];
-
-        return from(response).pipe(
-            map(data => ({ event, data })),
-        );
+    @SubscribeMessage('saiuDaSala')
+    saiuDaSala(client: Socket, idSala: string){
+         client.leave(idSala);
+         client.emit('salaFechada', idSala)
     }
 
 }
