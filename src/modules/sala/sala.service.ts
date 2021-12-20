@@ -38,14 +38,13 @@ export class SalaService {
   }
 
   async adicionarJogador(id: string, jogador: JogadorModel) {
-    let sala: SalaModel = await this.buscarPorId(id)
-    sala.jogadores = sala.jogadores.filter(jogador => jogador.email !== jogador.email)
+    let sala: SalaModel = await this.salaModel.findById(id)
     sala.jogadores.push(jogador)
 
     return this.salaModel.findByIdAndUpdate({
       _id: sala.id
     }, {
-      $set: sala,
+      $set: sala ,
     }, {
       new: true
     })
