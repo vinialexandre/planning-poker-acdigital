@@ -16,6 +16,9 @@ export class Sala {
 
     @Prop()
     administrador: Administrador
+
+    @Prop()
+    revelarVotos: boolean
 }
 
 export const SalaSchema = SchemaFactory.createForClass(Sala);

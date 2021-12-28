@@ -16,4 +16,7 @@ export class SalaModel {
 
     @ApiProperty()
     administrador: AdministradorModel
+
+    @ApiProperty()
+    revelarVotos: boolean = false
 }
