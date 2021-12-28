@@ -16,7 +16,7 @@ export class SalaService {
   }
 
   async buscarSalas(email: string): Promise<SalaModel[]> {
-    return await this.salaModel.find({ "administrador.email": email });
+    return await this.salaModel.find({ "administrador.email": email }).sort({ field: 'desc', test: -1 });
   }
 
   buscarPorId(id: string) {

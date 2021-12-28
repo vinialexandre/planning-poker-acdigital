@@ -45,6 +45,17 @@ export class HistoriaController {
   }
 
   @ApiOkResponse({type: HistoriaModel})
+  @Get(':id')
+  async buscarHistoriaPorId(@Param('id') id: string) {
+    try{
+      return this.historiaService.buscarHistoria(id);
+    }catch(error){
+      throw new HttpException(new Result('Não foi possivel realizar a renoção', false, null, error), 
+                              HttpStatus.BAD_REQUEST);
+    }
+  }
+
+  @ApiOkResponse({type: HistoriaModel})
   @Put(':id/votar')
   async adicionarVotoJogador(@Param('id') id: string, @Body() voto: VotoModel): Promise<HistoriaModel> {
     try{

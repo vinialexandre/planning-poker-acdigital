@@ -14,6 +14,11 @@ export class HistoriaService {
     return this.historiaModel.find({ idSala: idSala, emAberto: emAberto  });
   }
 
+
+  buscarHistoria(idHistoria: string) {
+    return this.historiaModel.findById({ _id: idHistoria });
+  }
+
   adicionarHistoria(historia: HistoriaModel): Promise<HistoriaModel> {
     const historiaCriada = new this.historiaModel(historia)
     return historiaCriada.save();
