@@ -1,5 +1,5 @@
 import { ApiProperty } from "@nestjs/swagger"
-import { CartaModel } from "./carta"
+import { CartaModel } from "./Carta"
 
 export class MetodologiaModel {
     @ApiProperty()

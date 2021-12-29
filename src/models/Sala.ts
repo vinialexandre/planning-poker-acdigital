@@ -1,5 +1,5 @@
-import { AdministradorModel } from './administrador';
-import { JogadorModel } from './jogador';
+import { AdministradorModel } from './Administrador';
+import { JogadorModel } from './Jogador';
 import { ApiProperty } from '@nestjs/swagger';
 import { IsNotEmpty } from 'class-validator';
 

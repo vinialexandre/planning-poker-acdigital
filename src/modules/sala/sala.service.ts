@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model, Types } from 'mongoose';
-import { JogadorModel } from 'src/models/jogador';
+import { JogadorModel } from 'src/models/Jogador';
 import { Sala, SalaDocument } from '../../entities/sala.entity';
-import { SalaModel } from '../../models/sala'
+import { SalaModel } from '../../models/Sala'
 
 @Injectable()
 export class SalaService {

@@ -1,9 +1,9 @@
 import { Body, Controller, Delete, Get, HttpException, HttpStatus, Param, Post, Put } from '@nestjs/common';
 import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { HistoriaService } from './historia.service';
-import { HistoriaModel } from '../../models/historia'
+import { HistoriaModel } from '../../models/Historia'
 import { Result } from 'src/models/result';
-import { VotoModel } from 'src/models/voto';
+import { VotoModel } from 'src/models/Voto';
 
 @ApiTags('História')
 @Controller('historia')

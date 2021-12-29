@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model, Types } from 'mongoose';
-import { HistoriaModel } from 'src/models/historia';
-import { VotoModel } from 'src/models/voto';
+import { HistoriaModel } from 'src/models/Historia';
+import { VotoModel } from 'src/models/Voto';
 import { Historia, HistoriaDocument } from '../../entities/historia.entity';
 
 @Injectable()

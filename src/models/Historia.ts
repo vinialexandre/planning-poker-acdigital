@@ -1,6 +1,6 @@
 import { ApiProperty } from "@nestjs/swagger"
 import { IsNotEmpty } from "class-validator"
-import { VotoModel } from "./voto"
+import { VotoModel } from "./Voto"
 
 export class HistoriaModel {
     @ApiProperty()

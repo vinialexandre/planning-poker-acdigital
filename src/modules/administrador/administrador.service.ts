@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Administrador, AdministradorDocument } from '../../entities/administrador.entity';
-import { AdministradorModel } from '../../models/administrador'
+import { AdministradorModel } from '../../models/Administrador'
 
 @Injectable()
 export class AdministradorService {

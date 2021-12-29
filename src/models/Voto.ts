@@ -1,6 +1,6 @@
-import { HistoriaModel } from './historia';
-import { JogadorModel } from './jogador';
-import { CartaModel } from "./carta";
+import { HistoriaModel } from './Historia';
+import { JogadorModel } from './Jogador';
+import { CartaModel } from "./Carta";
 import { ApiProperty } from '@nestjs/swagger';
 
 export class VotoModel { 

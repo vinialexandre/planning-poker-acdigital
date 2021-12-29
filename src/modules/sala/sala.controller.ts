@@ -1,10 +1,10 @@
 import { Body, Controller, Delete, Get, HttpException, HttpStatus, Param, Post, Put } from '@nestjs/common';
 import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { SalaService } from './sala.service';
-import { SalaModel } from '../../models/sala'
+import { SalaModel } from '../../models/Sala'
 import { Result } from 'src/models/result';
-import { HistoriaModel } from 'src/models/historia';
-import { JogadorModel } from 'src/models/jogador';
+import { HistoriaModel } from 'src/models/Historia';
+import { JogadorModel } from 'src/models/Jogador';
 import { HistoriaService } from '../historia/historia.service';
 
 @ApiTags('Sala')

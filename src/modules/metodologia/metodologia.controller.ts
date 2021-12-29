@@ -1,7 +1,7 @@
 import { Body, Controller, Delete, Get, HttpException, HttpStatus, Param, Post, Put } from '@nestjs/common';
 import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { MetodologiaService } from './metodologia.service';
-import { MetodologiaModel } from '../../models/metodologia'
+import { MetodologiaModel } from '../../models/Metodologia'
 import { Result } from 'src/models/result';
 
 @ApiTags('Métologia')

@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model, ObjectId } from 'mongoose';
-import { MetodologiaModel } from 'src/models/metodologia';
+import { MetodologiaModel } from 'src/models/Metodologia';
 import { Metodologia, MetodologiaDocument } from '../../entities/metodologia.entity';
 
 @Injectable()
