@@ -13,6 +13,10 @@ export class MetodologiaService {
     return this.metodologiaModel.findOne();
   }
 
+  buscarPorId(id: string) {
+    return this.metodologiaModel.findById(id);
+  }
+
   alterarMetodologia(metodologia: MetodologiaModel){
     return this.metodologiaModel.findByIdAndUpdate({
       _id: metodologia.id
