@@ -4,7 +4,7 @@ import { MetodologiaService } from './metodologia.service';
 import { MetodologiaModel } from '../../models/Metodologia'
 import { Result } from 'src/models/result';
 
-@ApiTags('Métologia')
+@ApiTags('Metodologia')
 @Controller('metodologia')
 export class MetodologiaController {
   constructor(
@@ -16,6 +16,17 @@ export class MetodologiaController {
   async buscar(): Promise<MetodologiaModel> {
     try{
       return this.metodologiaService.buscarMetodologia();
+    }catch(error){
+      throw new HttpException(new Result('Não foi possivel realizar a chamada', false, null, error), 
+                              HttpStatus.BAD_REQUEST);
+    }
+  }
+
+  @ApiOkResponse({type: MetodologiaModel})
+  @Get(':id')
+  async buscarPorId(@Param('id') id: string): Promise<MetodologiaModel> {
+    try{
+      return this.metodologiaService.buscarPorId(id);
     }catch(error){
       throw new HttpException(new Result('Não foi possivel realizar a chamada', false, null, error), 
                               HttpStatus.BAD_REQUEST);
