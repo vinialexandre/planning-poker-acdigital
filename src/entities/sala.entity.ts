@@ -6,29 +6,31 @@ import { Jogador } from './jogador.entity';
 
 export type SalaDocument = Sala & Document;
 
-@Schema({collection: 'sala'})
+@Schema({ collection: 'sala' })
 export class Sala {
-    @Prop()
-    nome: string
+  @Prop()
+  nome: string;
 
-    @Prop()
-    jogadores?: Jogador[]
+  @Prop()
+  jogadores?: Jogador[];
 
-    @Prop()
-    administrador: Administrador
+  @Prop()
+  administrador: Administrador;
 
-    @Prop()
-    revelarVotos: boolean
+  @Prop()
+  revelarVotos: boolean;
+
+  @Prop()
+  metodologiaSelecionada: string;
 }
 
 export const SalaSchema = SchemaFactory.createForClass(Sala);
 
 SalaSchema.set('toJSON', {
-    virtuals: true,
-    versionKey:false,
+  virtuals: true,
+  versionKey: false,
 });
 
-SalaSchema.virtual('id')
-.get(function() {
+SalaSchema.virtual('id').get(function () {
   return this._id.toHexString();
 });
